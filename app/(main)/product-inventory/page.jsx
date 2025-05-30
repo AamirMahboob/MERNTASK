@@ -95,7 +95,9 @@ const ProductInventoryPage = () => {
           variant="primary"
         >
           <span style={{
-            color: "white"
+            color: "white",
+            cursor: "pointer"
+
           }}>Add Product</span>
         </Button>
       </div>
@@ -155,7 +157,8 @@ const ProductInventoryPage = () => {
             >
               <span
                 style={{
-                  color: "red"
+                  color: "red",
+                  cursor: "pointer"
 
                 }}
               >Cancel</span>
@@ -193,8 +196,8 @@ const ProductInventoryPage = () => {
               onChange={handleInputChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
               required
-               style={{
-                color:'black'
+              style={{
+                color: 'black'
               }}
             />
           </div>
@@ -213,8 +216,8 @@ const ProductInventoryPage = () => {
               onChange={(e) => setFormData({ ...formData, price: e.target.value })}
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
               required
-               style={{
-                color:'black'
+              style={{
+                color: 'black'
               }}
             />
           </div>
@@ -231,7 +234,7 @@ const ProductInventoryPage = () => {
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               required
               style={{
-                color:'black'
+                color: 'black'
               }}
 
             >
