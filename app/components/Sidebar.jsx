@@ -80,8 +80,8 @@ const Sidebar = ({ isMobile = false, onClose }) => {
         </nav>
 
         {/* Settings Section */}
-        <div className="space-y-3 mb-6">
-          <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider px-2">
+        <div className="hidden space-y-3 mb-6">
+          <div className="hidden text-xs font-semibold text-slate-400 uppercase tracking-wider px-2">
             Account
           </div>
           <Link
