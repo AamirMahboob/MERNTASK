@@ -155,7 +155,7 @@ const ProductInventoryPage = () => {
             >
               <span
                 style={{
-                  color: "white"
+                  color: "red"
 
                 }}
               >Cancel</span>
