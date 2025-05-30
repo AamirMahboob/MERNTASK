@@ -1,14 +1,54 @@
 
+
 'use client';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleUserStatus } from '../../store/usersSlice';
+
+const ConfirmationModal = ({ isOpen, onClose, onConfirm, user }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-lg shadow-xl w-full max-w-md overflow-hidden">
+        <div className="p-6">
+          <h3 className="text-lg font-semibold text-black mb-2 ">Confirm Status Change</h3>
+          <p className="text-black">
+            Are you sure you want to change <span className="font-medium">{user?.name}</span>'s status to{' '}
+            <span className="font-medium">
+              {user?.status === 'active' ? 'inactive' : 'active'}
+            </span>?
+          </p>
+        </div>
+        <div className="bg-gray-50 px-6 py-4 flex justify-end space-x-3">
+          <button
+            onClick={onClose}
+            className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-md transition-colors duration-200"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={onConfirm}
+            className="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-md transition-colors duration-200"
+            style={{
+              color:'white'
+            }}
+          >
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const UserManagementPage = () => {
   const users = useSelector((state) => state.users.users);
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 5;
+  const [showModal, setShowModal] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
 
   // Calculate pagination
   const indexOfLastUser = currentPage * usersPerPage;
@@ -16,8 +56,16 @@ const UserManagementPage = () => {
   const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
   const totalPages = Math.ceil(users.length / usersPerPage);
 
-  const handleStatusChange = (userId) => {
-    dispatch(toggleUserStatus(userId));
+  const handleStatusToggle = (user) => {
+    setSelectedUser(user);
+    setShowModal(true);
+  };
+
+  const confirmStatusChange = () => {
+    if (selectedUser) {
+      dispatch(toggleUserStatus(selectedUser.id));
+    }
+    setShowModal(false);
   };
 
   return (
@@ -27,9 +75,18 @@ const UserManagementPage = () => {
         <p className="text-gray-600">Manage your users and their status</p>
       </div>
       
+      {/* Confirmation Modal */}
+      <ConfirmationModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        onConfirm={confirmStatusChange}
+        user={selectedUser}
+      />
+
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
+            {/* Table Headers (unchanged) */}
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
@@ -39,6 +96,8 @@ const UserManagementPage = () => {
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
               </tr>
             </thead>
+            
+            {/* Table Body */}
             <tbody className="bg-white divide-y divide-gray-200">
               {currentUsers.map((user) => (
                 <tr key={user.id}>
@@ -59,7 +118,7 @@ const UserManagementPage = () => {
                       <input 
                         type="checkbox" 
                         checked={user.status === 'active'}
-                        onChange={() => handleStatusChange(user.id)}
+                        onChange={() => handleStatusToggle(user)}
                         className="sr-only peer"
                       />
                       <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
@@ -71,8 +130,9 @@ const UserManagementPage = () => {
           </table>
         </div>
 
+        {/* Pagination (unchanged) */}
         {/* Pagination */}
-        {users.length > usersPerPage && (
+//         {users.length > usersPerPage && (
           <div className="px-6 py-3 flex items-center justify-between border-t border-gray-200">
             <div className="flex-1 flex justify-between sm:hidden">
               <button
@@ -142,4 +202,3 @@ const UserManagementPage = () => {
 };
 
 export default UserManagementPage;
- 
