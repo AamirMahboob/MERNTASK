@@ -33,17 +33,7 @@ const MainLayout = ({ children }) => {
             </h1>
           </div>
 
-          {/* Center - Search Bar */}
-          {/* <div className="hidden sm:flex items-center flex-1 max-w-md mx-8">
-            <div className="relative w-full">
-              <SearchOutlined className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search..."
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-              />
-            </div>
-          </div> */}
+          
 
           {/* Right Section */}
           <div className="flex items-center gap-3">

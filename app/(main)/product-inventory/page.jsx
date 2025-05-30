@@ -179,13 +179,13 @@ const ProductInventoryPage = () => {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 space-x-2 flex gap-4">
                     <button
                       onClick={() => handleEdit(product)}
-                      className="text-blue-600 hover:text-blue-900"
+                      className="cursor-pointer bg-blue-100 text-blue-700 px-3 py-1 rounded-md hover:bg-blue-200 hover:text-blue-800 transition duration-200 flex items-center gap-1"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDelete(product.id)}
-                      className="text-red-600 hover:text-red-900"
+                      className="cursor-pointer bg-red-100 text-red-700 px-3 py-1 rounded-md hover:bg-red-200 hover:text-red-800 font-medium transition duration-200"
                     >
                       Delete
                     </button>

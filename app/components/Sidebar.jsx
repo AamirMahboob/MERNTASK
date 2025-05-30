@@ -1,30 +1,4 @@
-// "use client";
-// import React from "react";
-// import Link from "next/link";
-
-// const Sidebar = () => {
-//   return (
-//     <aside className="w-64 h-screen bg-gray-800 text-white p-6">
-//       <h2 className="text-2xl font-bold mb-8">Admin Panel</h2>
-//       <nav className="flex flex-col gap-4">
-//         <Link
-//           href="/user-management"
-//           className="hover:bg-gray-700 p-3 rounded transition duration-200"
-//         >
-//           User Management
-//         </Link>
-//         <Link
-//           href="/product-inventory"
-//           className="hover:bg-gray-700 p-3 rounded transition duration-200"
-//         >
-//           Product Inventory
-//         </Link>
-//       </nav>
-//     </aside>
-//   );
-// };
-
-// export default Sidebar;
+ 
 "use client";
 import React from "react";
 import Link from "next/link";
@@ -32,11 +6,11 @@ import { UserOutlined, ShoppingOutlined, DashboardOutlined } from "@ant-design/i
 
 const Sidebar = ({ isMobile = false, onClose }) => {
   const menuItems = [
-    {
-      href: "/dashboard",
-      icon: <DashboardOutlined className="text-xl" />,
-      label: "Dashboard",
-    },
+    // {
+    //   href: "/dashboard",
+    //   icon: <DashboardOutlined className="text-xl" />,
+    //   label: "Dashboard",
+    // },
     {
       href: "/user-management",
       icon: <UserOutlined className="text-xl" />,
