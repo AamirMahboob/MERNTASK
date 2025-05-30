@@ -193,6 +193,9 @@ const ProductInventoryPage = () => {
               onChange={handleInputChange}
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
               required
+               style={{
+                color:'black'
+              }}
             />
           </div>
 
@@ -210,6 +213,9 @@ const ProductInventoryPage = () => {
               onChange={(e) => setFormData({ ...formData, price: e.target.value })}
               className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
               required
+               style={{
+                color:'black'
+              }}
             />
           </div>
 
@@ -222,8 +228,12 @@ const ProductInventoryPage = () => {
               name="category"
               value={formData.category}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-black"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               required
+              style={{
+                color:'black'
+              }}
+
             >
               <option value="">Select a category</option>
               {categories.map((category) => (
